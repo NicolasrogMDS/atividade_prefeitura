@@ -1,13 +1,19 @@
+"""
+Turma - 93313
+
+Nome completo dos componentes:
+1 - Nicolas Roger Araujo Monteiro da Silva
+2 - Leonardo Machado
+"""
+
 import os 
-from dataclasses import dataclass
 os.system ("cls||clear")
+from dataclasses import dataclass
 
 @dataclass
 class Familia:
     salario : float
     filho : int
-
-numero_familias = 0
 
 def limpar_terminal():
     os.system("cls || clear")
@@ -37,8 +43,6 @@ def lendo_arquivo(a):
     arquivo_origem.close()
     return list_dados
 
-
-
 while True:
     print("""
     Código | Descrição
@@ -46,39 +50,45 @@ while True:
     2    |  Exibir resultados
     3    |  Sair
     """)
-    opcao = int(input("\nOpção desejada:  "))
+    opcao = int(input("\nInsira a opção desejada:  "))
     match (opcao):
         case 1:
             lista_familia = []
             familia = Familia(
-            salario = float(input("Digite salario total: ")),
-            filho = int(input("Informe a quantidade: "))
+            salario = float(input("Digite o salário total da família: ")),
+            filho = int(input("Informe a quantidade de filhos: "))
             )
             lista_familia.append(familia)
             nome_arquivo = "pesquisa_prefeitura.txt"
             criando_arquivo(nome_arquivo,lista_familia)
             limpar_terminal()
         case 2:
+            lista_familia = []
             nome_arquivo = "pesquisa_prefeitura.txt"
             lista_salario=[]
             lista_filhos = []
-            list_familia = lendo_arquivo(nome_arquivo)
-            for familia in (list_familia):
+            lista_familia = lendo_arquivo(nome_arquivo)
+            numero_familias = 0
+
+            for familia in (lista_familia):
                 numero_familias += 1
                 lista_filhos.append(familia.filho)
                 lista_salario.append(familia.salario)
+
             media_filhos = calcular_media(lista_filhos)
             media_salario = calcular_media(lista_salario)
             max_salario=max(lista_salario)
             min_salario=min(lista_salario)
+
             limpar_terminal()
-            print(f"Media de filhos: {media_filhos}")
-            print(f"Media salarial: {media_salario}")
-            print(f"Maior salario: {max_salario}")
-            print(f"Menor salario: {min_salario}")
-            print(f"Numero de familias: {numero_familias}")
+            print(f"Media de filhos da população: {media_filhos:.2f}")
+            print(f"Media salarial da população: {media_salario:.2f}")
+            print(f"Maior salário da população: {max_salario:.2f}")
+            print(f"Menor salário da população: {min_salario:.2f}")
+            print(f"Número de famílias da população: {numero_familias}")
 
         case 3:
             break
-        
-    
+
+        case _:
+            print("Opção inválida. Por favor, tente novamente,")
