@@ -15,6 +15,10 @@ class Familia:
     salario : float
     filho : int
 
+@dataclass
+class Dados_finais:
+    lista_final: list
+
 def limpar_terminal():
     os.system("cls || clear")
 
@@ -34,6 +38,13 @@ def criando_arquivo(a,b):
     arquivo_dados.close()
     print("\n=== Dados Salvos ===\n")
 
+def criando_arquivo_final(a,b):
+    with open(a,"w") as arquivo_dados:
+        for dado in b:
+            arquivo_dados.write(f"{dado}, \n")
+    arquivo_dados.close()
+    print("\n=== Dados Salvos ===\n")
+    
 def lendo_arquivo(a):
     list_dados=[]
     with open(a,"r") as arquivo_origem:
@@ -59,15 +70,16 @@ while True:
             filho = int(input("Informe a quantidade de filhos: "))
             )
             lista_familia.append(familia)
-            nome_arquivo = "pesquisa_prefeitura.txt"
+            nome_arquivo = "dados_analise.txt"
             criando_arquivo(nome_arquivo,lista_familia)
             limpar_terminal()
 
         case 2:
             lista_familia = []
-            nome_arquivo = "pesquisa_prefeitura.txt"
+            nome_arquivo = "dados_analise.txt"
             lista_salario=[]
             lista_filhos = []
+            lista_final = []
             lista_familia = lendo_arquivo(nome_arquivo)
             numero_familias = 0
 
@@ -87,6 +99,13 @@ while True:
             print(f"Media salarial da população: {media_salario:.2f}")
             print(f"Maior salário: {max_salario:.2f}")
             print(f"Menor salário: {min_salario:.2f}")
+            lista_final.append(numero_familias)
+            lista_final.append(media_filhos)
+            lista_final.append(media_salario)
+            lista_final.append(max_salario)
+            lista_final.append(min_salario)
+            nome_arquivo_final = "pesquisa_prefeitura.txt"
+            criando_arquivo_final(nome_arquivo_final,lista_final)
 
         case 3:
             print("\nPrograma finalizado.")
