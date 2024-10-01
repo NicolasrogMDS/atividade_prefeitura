@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 print("""
 Código | Descrição
-  1      Adicionar família
-  2      Exibir resultados
-  3      Sair
+  1    |  Adicionar família
+  2    |  Exibir resultados
+  3    |  Sair
 """)
