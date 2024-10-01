@@ -45,7 +45,7 @@ def lendo_arquivo(a):
 
 while True:
     print("""
-    Código | Descrição
+  Código | Descrição
     1    |  Adicionar família
     2    |  Exibir resultados
     3    |  Sair
@@ -62,6 +62,7 @@ while True:
             nome_arquivo = "pesquisa_prefeitura.txt"
             criando_arquivo(nome_arquivo,lista_familia)
             limpar_terminal()
+
         case 2:
             lista_familia = []
             nome_arquivo = "pesquisa_prefeitura.txt"
@@ -81,14 +82,15 @@ while True:
             min_salario=min(lista_salario)
 
             limpar_terminal()
-            print(f"Media de filhos da população: {media_filhos:.2f}")
+            print(f"Número de famílias que responderam a pesquisa: {numero_familias}")
+            print(f"Media do número de filhos: {media_filhos:.2f}")
             print(f"Media salarial da população: {media_salario:.2f}")
-            print(f"Maior salário da população: {max_salario:.2f}")
-            print(f"Menor salário da população: {min_salario:.2f}")
-            print(f"Número de famílias da população: {numero_familias}")
+            print(f"Maior salário: {max_salario:.2f}")
+            print(f"Menor salário: {min_salario:.2f}")
 
         case 3:
+            print("\nPrograma finalizado.")
             break
 
         case _:
-            print("Opção inválida. Por favor, tente novamente,")
+            print("\nOpção inválida. Por favor, tente novamente.")
